@@ -1,0 +1,14 @@
+.DS_Store
+/nbproject/private/
+/nbproject/build/
+/nbproject/genfiles.properties
+/nbproject/private/private.properties
+/nbproject/project.properties
+/nbproject/project.xml
+*.form
+/build/
+/dist/
+/target/
+/out/
+/classes/
+/bin/
