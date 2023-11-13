@@ -26,6 +26,7 @@ public class Create extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         question1 = new javax.swing.JLabel();
         createButton = new javax.swing.JButton();
         userName = new javax.swing.JTextField();
@@ -40,16 +41,18 @@ public class Create extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 20));
         setResizable(false);
 
-        question1.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        question1.setForeground(new java.awt.Color(87, 115, 153));
-        question1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.setBackground(new java.awt.Color(30, 30, 30));
+
+        question1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        question1.setForeground(new java.awt.Color(204, 203, 211));
+        question1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         question1.setText("What is your name?");
 
-        createButton.setBackground(new java.awt.Color(87, 115, 153));
+        createButton.setBackground(new java.awt.Color(204, 203, 211));
         createButton.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
-        createButton.setForeground(new java.awt.Color(87, 115, 153));
+        createButton.setForeground(new java.awt.Color(204, 203, 211));
         createButton.setText("Create Project");
-        createButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(87, 115, 153), 1, true));
+        createButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 203, 211), 2, true));
         createButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createButton.setFocusable(false);
         createButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -59,12 +62,13 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
-        userName.setBackground(new java.awt.Color(247, 247, 251));
+        userName.setBackground(new java.awt.Color(54, 53, 59));
         userName.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        userName.setForeground(new java.awt.Color(29, 38, 51));
-        userName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        userName.setBorder(null);
+        userName.setForeground(new java.awt.Color(255, 255, 255));
+        userName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        userName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 192, 192), 2));
         userName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        userName.setMinimumSize(new java.awt.Dimension(64, 24));
         userName.setOpaque(true);
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,16 +76,16 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
-        question2.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        question2.setForeground(new java.awt.Color(87, 115, 153));
-        question2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        question2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        question2.setForeground(new java.awt.Color(204, 203, 211));
+        question2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         question2.setText("What is your project's name?");
 
-        projectName.setBackground(new java.awt.Color(247, 247, 251));
+        projectName.setBackground(new java.awt.Color(54, 53, 59));
         projectName.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        projectName.setForeground(new java.awt.Color(29, 38, 51));
-        projectName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        projectName.setBorder(null);
+        projectName.setForeground(new java.awt.Color(255, 255, 255));
+        projectName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        projectName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 192, 192), 2));
         projectName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         projectName.setOpaque(true);
         projectName.addActionListener(new java.awt.event.ActionListener() {
@@ -93,38 +97,52 @@ public class Create extends javax.swing.JFrame {
         errorMessage.setForeground(new java.awt.Color(255, 102, 102));
         errorMessage.setText("*You need to fill the fields above");
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(157, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(createButton, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(errorMessage, javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(userName, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(question2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(question1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(148, 148, 148))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(question1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(question2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101)
+                .addComponent(errorMessage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(question1, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(errorMessage))
-                    .addComponent(userName, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(question2, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addComponent(projectName, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(132, Short.MAX_VALUE)
-                .addComponent(question1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(question2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(errorMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -139,7 +157,7 @@ public class Create extends javax.swing.JFrame {
             App app= new App();
             app.setVisible(true);
             app.setProjectName(projectInput);
-            app.setUserName(userInput);
+            app.setWelcomeMessage(userInput);
             app.setProjectDate();
         } else {
             errorMessage.setVisible(true);
@@ -198,6 +216,7 @@ public class Create extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createButton;
     private javax.swing.JLabel errorMessage;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField projectName;
     private javax.swing.JLabel question1;
     private javax.swing.JLabel question2;

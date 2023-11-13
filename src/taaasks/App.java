@@ -3,21 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package taaasks;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+
 
 /**
  *
  * @author teobourloglou
  */
 public class App extends javax.swing.JFrame {
-
+    private static App instance;
     /**
      * Creates new form App
      */
     public App() {
         initComponents();
+    }
+    
+    public static App getInstance() {
+        if (instance == null) {
+            instance = new App();
+        } 
+        return instance;
     }
 
     /**
@@ -30,13 +42,25 @@ public class App extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        projectName = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        projectDate = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        menu = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        toDoContainer = new javax.swing.JPanel();
+        addTask = new javax.swing.JButton();
+        projectNameContainer = new javax.swing.JPanel();
+        projectNameLabel = new javax.swing.JLabel();
+        projectName = new javax.swing.JLabel();
+        icon1 = new javax.swing.JLabel();
+        dateCreatedContainer = new javax.swing.JPanel();
+        projectDateLabel = new javax.swing.JLabel();
+        projectDate = new javax.swing.JLabel();
+        icon2 = new javax.swing.JLabel();
+        totalTasksContainer = new javax.swing.JPanel();
+        totalTasksLabel = new javax.swing.JLabel();
+        totalTasks = new javax.swing.JLabel();
+        icon3 = new javax.swing.JLabel();
+        toDoTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Taaasks");
@@ -44,96 +68,304 @@ public class App extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1300, 750));
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(29, 38, 51));
+        jPanel2.setBackground(new java.awt.Color(30, 30, 30));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(247, 247, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/layers-subtract(1).png"))); // NOI18N
+        menu.setBackground(new java.awt.Color(54, 53, 59));
+
+        logo.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
+        logo.setForeground(new java.awt.Color(247, 247, 255));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/layers-subtract(1).png"))); // NOI18N
+
+        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
+        menu.setLayout(menuLayout);
+        menuLayout.setHorizontalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(logo)
+                .addGap(22, 22, 22))
+        );
+        menuLayout.setVerticalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        userName.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        userName.setForeground(new java.awt.Color(255, 255, 255));
+        userName.setText("Good Morning, {Name}");
+
+        jScrollPane1.setBackground(new java.awt.Color(30, 30, 30));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(280, 5));
+
+        toDoContainer.setBackground(new java.awt.Color(54, 53, 59));
+        toDoContainer.setMinimumSize(new java.awt.Dimension(280, 0));
+        toDoContainer.setLayout(new javax.swing.BoxLayout(toDoContainer, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(toDoContainer);
+
+        addTask.setBackground(new java.awt.Color(30, 30, 30));
+        addTask.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        addTask.setForeground(new java.awt.Color(255, 255, 255));
+        addTask.setText("+");
+        addTask.setToolTipText("Create new task");
+        addTask.setBorder(null);
+        addTask.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTaskActionPerformed(evt);
+            }
+        });
+
+        projectNameContainer.setBackground(new java.awt.Color(54, 53, 59));
+        projectNameContainer.setMaximumSize(new java.awt.Dimension(180, 32767));
+        projectNameContainer.setMinimumSize(new java.awt.Dimension(180, 0));
+        projectNameContainer.setPreferredSize(new java.awt.Dimension(180, 58));
+
+        projectNameLabel.setForeground(new java.awt.Color(204, 203, 211));
+        projectNameLabel.setText("Project name");
+
+        projectName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        projectName.setForeground(new java.awt.Color(255, 255, 255));
+        projectName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        projectName.setText("Project Name");
+
+        icon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/cube.png"))); // NOI18N
+
+        javax.swing.GroupLayout projectNameContainerLayout = new javax.swing.GroupLayout(projectNameContainer);
+        projectNameContainer.setLayout(projectNameContainerLayout);
+        projectNameContainerLayout.setHorizontalGroup(
+            projectNameContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(projectNameContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(projectNameContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(projectNameLabel)
+                    .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(icon1))
+                .addContainerGap(0, Short.MAX_VALUE))
+        );
+        projectNameContainerLayout.setVerticalGroup(
+            projectNameContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, projectNameContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(icon1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(projectNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(projectName)
+                .addContainerGap())
+        );
+
+        dateCreatedContainer.setBackground(new java.awt.Color(54, 53, 59));
+        dateCreatedContainer.setMaximumSize(new java.awt.Dimension(180, 32767));
+        dateCreatedContainer.setMinimumSize(new java.awt.Dimension(180, 0));
+        dateCreatedContainer.setPreferredSize(new java.awt.Dimension(180, 58));
+
+        projectDateLabel.setForeground(new java.awt.Color(204, 203, 211));
+        projectDateLabel.setText("Created on");
+
+        projectDate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        projectDate.setForeground(new java.awt.Color(255, 255, 255));
+        projectDate.setText("Date Created");
+
+        icon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/calendar.png"))); // NOI18N
+
+        javax.swing.GroupLayout dateCreatedContainerLayout = new javax.swing.GroupLayout(dateCreatedContainer);
+        dateCreatedContainer.setLayout(dateCreatedContainerLayout);
+        dateCreatedContainerLayout.setHorizontalGroup(
+            dateCreatedContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dateCreatedContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dateCreatedContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(projectDate)
+                    .addComponent(projectDateLabel)
+                    .addComponent(icon2))
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+        dateCreatedContainerLayout.setVerticalGroup(
+            dateCreatedContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateCreatedContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(icon2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(projectDateLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(projectDate)
+                .addContainerGap())
+        );
+
+        totalTasksContainer.setBackground(new java.awt.Color(54, 53, 59));
+        totalTasksContainer.setMaximumSize(new java.awt.Dimension(180, 32767));
+        totalTasksContainer.setMinimumSize(new java.awt.Dimension(180, 0));
+        totalTasksContainer.setPreferredSize(new java.awt.Dimension(180, 58));
+
+        totalTasksLabel.setForeground(new java.awt.Color(204, 203, 211));
+        totalTasksLabel.setText("Created on");
+
+        totalTasks.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        totalTasks.setForeground(new java.awt.Color(255, 255, 255));
+        totalTasks.setText("Total Tasks");
+
+        icon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/analytics.png"))); // NOI18N
+
+        javax.swing.GroupLayout totalTasksContainerLayout = new javax.swing.GroupLayout(totalTasksContainer);
+        totalTasksContainer.setLayout(totalTasksContainerLayout);
+        totalTasksContainerLayout.setHorizontalGroup(
+            totalTasksContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(totalTasksContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(totalTasksContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalTasks)
+                    .addComponent(totalTasksLabel)
+                    .addComponent(icon3))
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+        totalTasksContainerLayout.setVerticalGroup(
+            totalTasksContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, totalTasksContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(icon3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(totalTasksLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(totalTasks)
+                .addContainerGap())
+        );
+
+        toDoTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        toDoTitle.setForeground(new java.awt.Color(255, 255, 255));
+        toDoTitle.setText("To do");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userName)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(projectNameContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(dateCreatedContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(toDoTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(addTask))))
+                        .addGap(24, 24, 24)
+                        .addComponent(totalTasksContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 583, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(694, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(userName)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dateCreatedContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(projectNameContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(totalTasksContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTask)
+                    .addComponent(toDoTitle))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                .addContainerGap())
         );
-
-        projectName.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
-        projectName.setForeground(new java.awt.Color(29, 38, 51));
-        projectName.setText("Project Name");
-
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(87, 115, 153));
-        jLabel3.setText("CREATED");
-
-        projectDate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        projectDate.setForeground(new java.awt.Color(29, 38, 51));
-        projectDate.setText("Date Created");
-
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(29, 38, 51));
-        jLabel6.setText("2801");
-
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(87, 115, 153));
-        jLabel5.setText("TOTAL TASKS");
-
-        userName.setText("ali");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 547, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(projectDate)
-                .addGap(67, 67, 67)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(projectName)
-                            .addComponent(jLabel3)
-                            .addComponent(projectDate)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(81, 81, 81)
-                        .addComponent(userName))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void addTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTaskActionPerformed
+        CreateTask taskPopup = new CreateTask(this, true);
 
-    public void setUserName(String text) {
-        userName.setText(text);
+        taskPopup.setLocationRelativeTo(this);
+        taskPopup.errorMessageHide();
+        taskPopup.setVisible(true);
+
+        if (!(toDoContainer.getLayout() instanceof BoxLayout)) {
+            toDoContainer.setLayout(new BoxLayout(toDoContainer, BoxLayout.Y_AXIS));
+        }
+        
+        if (toDoContainer.getBackground().equals(new Color(54,53,59))) {
+            toDoContainer.setBackground(new Color(30,30,30));
+        }
+
+        Task task = new Task();
+        task.setTitle(taskPopup.getTaskTitle());
+        task.setDescription(taskPopup.getTaskDescription());
+        task.setTag((String) taskPopup.getTaskTag().getSelectedItem());
+        
+        int index = (int) taskPopup.getTaskTag().getSelectedIndex();
+        
+        switch (index) {
+            case 0:
+                task.setTagBackground(150,103,224);
+                break;
+            case 1:
+                task.setTagBackground(212,187,252);
+                break;
+            case 2:
+                task.setTagBackground(235,217,252);
+                break;
+            case 3:
+                task.setTagBackground(242,235,251);
+                break;
+            case 4:
+                task.setTagBackground(251,250,255);
+                break;
+            default:
+                task.setTagBackground(255,255,255);
+                break;
+        }
+        
+        
+
+        if (taskPopup.submit) {
+            Dimension verticalSpacing = new Dimension(0, 10);
+            toDoContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
+            toDoContainer.add(task);
+
+            toDoContainer.revalidate();
+            toDoContainer.repaint();
+        }
+        
+    }//GEN-LAST:event_addTaskActionPerformed
+    
+    public void setWelcomeMessage(String text) {
+        int currentHour = LocalDateTime.now().getHour();
+        if (currentHour < 12) {
+            userName.setText("Good Morning, " + text);
+        } else {
+            userName.setText("Good Afternoon, " + text);
+        }
+        
     }
     
     public void setProjectName(String text) {
@@ -142,7 +374,7 @@ public class App extends javax.swing.JFrame {
     
     public void setProjectDate() {
         LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMM uuuu", Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM uuuu", Locale.ENGLISH);
         String formattedDateTime = currentDateTime.format(formatter);
         projectDate.setText(formattedDateTime);
     }
@@ -183,13 +415,25 @@ public class App extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton addTask;
+    private javax.swing.JPanel dateCreatedContainer;
+    private javax.swing.JLabel icon1;
+    private javax.swing.JLabel icon2;
+    private javax.swing.JLabel icon3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel logo;
+    private javax.swing.JPanel menu;
     private javax.swing.JLabel projectDate;
+    private javax.swing.JLabel projectDateLabel;
     private javax.swing.JLabel projectName;
+    private javax.swing.JPanel projectNameContainer;
+    private javax.swing.JLabel projectNameLabel;
+    private javax.swing.JPanel toDoContainer;
+    private javax.swing.JLabel toDoTitle;
+    private javax.swing.JLabel totalTasks;
+    private javax.swing.JPanel totalTasksContainer;
+    private javax.swing.JLabel totalTasksLabel;
     private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }

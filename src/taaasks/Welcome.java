@@ -26,13 +26,14 @@ public class Welcome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         description = new javax.swing.JLabel();
         text1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         text2 = new javax.swing.JLabel();
         text3 = new javax.swing.JLabel();
         exploreButton = new javax.swing.JButton();
-        logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome to Taaasks");
@@ -42,36 +43,40 @@ public class Welcome extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(500, 450));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(30, 30, 30));
+
         title.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
-        title.setForeground(new java.awt.Color(29, 38, 51));
+        title.setForeground(new java.awt.Color(255, 255, 255));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Welcome");
 
         description.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        description.setForeground(new java.awt.Color(87, 115, 153));
+        description.setForeground(new java.awt.Color(204, 203, 211));
         description.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         description.setText("Stay organized, stay ahead");
 
         text1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        text1.setForeground(new java.awt.Color(87, 115, 153));
-        text1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/playlist-add(1).png"))); // NOI18N
+        text1.setForeground(new java.awt.Color(204, 203, 211));
+        text1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/new-project.png"))); // NOI18N
         text1.setText("Create a new project");
 
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/layers-subtract(1).png"))); // NOI18N
+
         text2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        text2.setForeground(new java.awt.Color(87, 115, 153));
-        text2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/list-check(1).png"))); // NOI18N
+        text2.setForeground(new java.awt.Color(204, 203, 211));
+        text2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/add-tasks.png"))); // NOI18N
         text2.setText("Add your tasks");
 
         text3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        text3.setForeground(new java.awt.Color(87, 115, 153));
-        text3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/trending-up(1).png"))); // NOI18N
+        text3.setForeground(new java.awt.Color(204, 203, 211));
+        text3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/boost-arrow.png"))); // NOI18N
         text3.setText("Boost your productivity");
 
-        exploreButton.setBackground(new java.awt.Color(87, 115, 153));
+        exploreButton.setBackground(new java.awt.Color(204, 203, 211));
         exploreButton.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
-        exploreButton.setForeground(new java.awt.Color(87, 115, 153));
+        exploreButton.setForeground(new java.awt.Color(204, 203, 211));
         exploreButton.setText("Start Exploring");
-        exploreButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(87, 115, 153), 1, true));
+        exploreButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 203, 211)));
         exploreButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exploreButton.setFocusable(false);
         exploreButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -83,30 +88,30 @@ public class Welcome extends javax.swing.JFrame {
             }
         });
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/layers-subtract.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(description, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(title, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(exploreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(logo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(logo)))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
                 .addComponent(logo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(title)
@@ -120,7 +125,18 @@ public class Welcome extends javax.swing.JFrame {
                 .addComponent(text3)
                 .addGap(18, 18, 18)
                 .addComponent(exploreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(52, 52, 52))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -173,6 +189,7 @@ public class Welcome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel description;
     private javax.swing.JButton exploreButton;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel text1;
     private javax.swing.JLabel text2;
