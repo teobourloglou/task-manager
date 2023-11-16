@@ -46,9 +46,10 @@ public class CreateTask extends javax.swing.JDialog {
         setBackground(new java.awt.Color(30, 30, 30));
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 30));
+        jPanel1.setMinimumSize(new java.awt.Dimension(427, 0));
 
         taskTitle.setBackground(new java.awt.Color(54, 53, 59));
-        taskTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        taskTitle.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
         taskTitle.setForeground(new java.awt.Color(255, 255, 255));
         taskTitle.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         taskTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 192, 192), 2));
@@ -61,23 +62,24 @@ public class CreateTask extends javax.swing.JDialog {
         createButton.setBackground(new java.awt.Color(202, 232, 234));
         createButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         createButton.setText("Create");
+        createButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createButtonActionPerformed(evt);
             }
         });
 
-        titleLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel.setText("Enter a title for this task*");
 
-        titleLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        titleLabel1.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
         titleLabel1.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel1.setText("Enter a description");
 
         taskDescription.setBackground(new java.awt.Color(54, 53, 59));
         taskDescription.setColumns(20);
-        taskDescription.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        taskDescription.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
         taskDescription.setForeground(new java.awt.Color(255, 255, 255));
         taskDescription.setRows(5);
         taskDescription.setWrapStyleWord(true);
@@ -85,13 +87,15 @@ public class CreateTask extends javax.swing.JDialog {
         taskDescription.setBorder(null);
         jScrollPane1.setViewportView(taskDescription);
 
+        errorMessage.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
         errorMessage.setForeground(new java.awt.Color(255, 102, 102));
         errorMessage.setText("*You need to fill the title");
 
-        tagLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        tagLabel.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
         tagLabel.setForeground(new java.awt.Color(255, 255, 255));
         tagLabel.setText("Select a tag");
 
+        taskTag.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
         taskTag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Critical Priority", "High Priority", "Medium Priority", "Low Priority", "No Priority" }));
         taskTag.setSelectedIndex(2);
 
@@ -106,7 +110,7 @@ public class CreateTask extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titleLabel1)
                             .addComponent(titleLabel))
-                        .addContainerGap(175, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(taskTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,7 +120,7 @@ public class CreateTask extends javax.swing.JDialog {
                                 .addComponent(createButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(errorMessage, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 58, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +137,7 @@ public class CreateTask extends javax.swing.JDialog {
                 .addComponent(tagLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(taskTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(errorMessage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,7 +148,7 @@ public class CreateTask extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

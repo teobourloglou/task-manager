@@ -2,6 +2,7 @@ package taaasks;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import static taaasks.App.removeTask;
 
 
 /*
@@ -65,7 +66,7 @@ public class Task extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(280, 150));
         setPreferredSize(new java.awt.Dimension(280, 123));
 
-        taskTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        taskTitle.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         taskTitle.setForeground(new java.awt.Color(255, 255, 255));
         taskTitle.setText("Task Title");
 
@@ -79,11 +80,11 @@ public class Task extends javax.swing.JPanel {
             }
         });
 
-        taskTag.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        taskTag.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         taskTag.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         taskTag.setText("tag");
 
-        taskDescription.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        taskDescription.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
         taskDescription.setForeground(new java.awt.Color(204, 203, 211));
         taskDescription.setText("Task Description");
 
@@ -97,7 +98,7 @@ public class Task extends javax.swing.JPanel {
                     .addComponent(taskTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(taskDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 8, Short.MAX_VALUE))
+                        .addGap(0, 12, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(taskTag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
@@ -120,7 +121,8 @@ public class Task extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-
+        int taskId = this.getId();
+        removeTask(taskId);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
 

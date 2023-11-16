@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Locale;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -18,11 +20,18 @@ import javax.swing.BoxLayout;
  */
 public class App extends javax.swing.JFrame {
     private static App instance;
+    private static ArrayList<Task> tasks;
+    private int numberOfTasks;
+    private static int currentTasks;
     /**
      * Creates new form App
      */
     public App() {
+        tasks = new ArrayList<>();
         initComponents();
+        numberOfTasks = 0;
+        currentTasks = 0;
+        totalTasks.setText("0");
     }
     
     public static App getInstance() {
@@ -93,7 +102,7 @@ public class App extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        userName.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        userName.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         userName.setForeground(new java.awt.Color(255, 255, 255));
         userName.setText("Good Morning, {Name}");
 
@@ -125,10 +134,11 @@ public class App extends javax.swing.JFrame {
         projectNameContainer.setMinimumSize(new java.awt.Dimension(180, 0));
         projectNameContainer.setPreferredSize(new java.awt.Dimension(180, 58));
 
+        projectNameLabel.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
         projectNameLabel.setForeground(new java.awt.Color(204, 203, 211));
         projectNameLabel.setText("Project name");
 
-        projectName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        projectName.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
         projectName.setForeground(new java.awt.Color(255, 255, 255));
         projectName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         projectName.setText("Project Name");
@@ -145,7 +155,7 @@ public class App extends javax.swing.JFrame {
                     .addComponent(projectNameLabel)
                     .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(icon1))
-                .addContainerGap(0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         projectNameContainerLayout.setVerticalGroup(
             projectNameContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,10 +174,11 @@ public class App extends javax.swing.JFrame {
         dateCreatedContainer.setMinimumSize(new java.awt.Dimension(180, 0));
         dateCreatedContainer.setPreferredSize(new java.awt.Dimension(180, 58));
 
+        projectDateLabel.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
         projectDateLabel.setForeground(new java.awt.Color(204, 203, 211));
         projectDateLabel.setText("Created on");
 
-        projectDate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        projectDate.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
         projectDate.setForeground(new java.awt.Color(255, 255, 255));
         projectDate.setText("Date Created");
 
@@ -183,7 +194,7 @@ public class App extends javax.swing.JFrame {
                     .addComponent(projectDate)
                     .addComponent(projectDateLabel)
                     .addComponent(icon2))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         dateCreatedContainerLayout.setVerticalGroup(
             dateCreatedContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,10 +213,11 @@ public class App extends javax.swing.JFrame {
         totalTasksContainer.setMinimumSize(new java.awt.Dimension(180, 0));
         totalTasksContainer.setPreferredSize(new java.awt.Dimension(180, 58));
 
+        totalTasksLabel.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
         totalTasksLabel.setForeground(new java.awt.Color(204, 203, 211));
-        totalTasksLabel.setText("Created on");
+        totalTasksLabel.setText("Total tasks");
 
-        totalTasks.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        totalTasks.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
         totalTasks.setForeground(new java.awt.Color(255, 255, 255));
         totalTasks.setText("Total Tasks");
 
@@ -221,7 +233,7 @@ public class App extends javax.swing.JFrame {
                     .addComponent(totalTasks)
                     .addComponent(totalTasksLabel)
                     .addComponent(icon3))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         totalTasksContainerLayout.setVerticalGroup(
             totalTasksContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +247,7 @@ public class App extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        toDoTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        toDoTitle.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
         toDoTitle.setForeground(new java.awt.Color(255, 255, 255));
         toDoTitle.setText("To do");
 
@@ -280,7 +292,7 @@ public class App extends javax.swing.JFrame {
                     .addComponent(addTask)
                     .addComponent(toDoTitle))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -316,8 +328,12 @@ public class App extends javax.swing.JFrame {
         if (toDoContainer.getBackground().equals(new Color(54,53,59))) {
             toDoContainer.setBackground(new Color(30,30,30));
         }
-
+        
+        numberOfTasks++;
+        currentTasks++;
+        totalTasks.setText(String.valueOf(currentTasks));
         Task task = new Task();
+        task.setId(numberOfTasks);
         task.setTitle(taskPopup.getTaskTitle());
         task.setDescription(taskPopup.getTaskDescription());
         task.setTag((String) taskPopup.getTaskTag().getSelectedItem());
@@ -345,18 +361,40 @@ public class App extends javax.swing.JFrame {
                 break;
         }
         
-        
-
         if (taskPopup.submit) {
             Dimension verticalSpacing = new Dimension(0, 10);
             toDoContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
             toDoContainer.add(task);
-
-            toDoContainer.revalidate();
-            toDoContainer.repaint();
+            tasks.add(task);
+            updateTaskDisplay();
         }
         
     }//GEN-LAST:event_addTaskActionPerformed
+    
+    public static void removeTask(int taskId) {
+        Iterator<Task> iterator = tasks.iterator();
+        while (iterator.hasNext()) {
+            Task task = iterator.next();
+            if (task.getId() == taskId) {
+                iterator.remove();
+                currentTasks--;
+                totalTasks.setText(String.valueOf(currentTasks));
+            }
+        }
+        updateTaskDisplay();
+    }
+    
+    public static void updateTaskDisplay() {
+        Dimension verticalSpacing = new Dimension(0, 10);
+        
+        toDoContainer.removeAll();
+        for (Task task : tasks) {
+            toDoContainer.add(task);
+            toDoContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
+        }
+        toDoContainer.revalidate();
+        toDoContainer.repaint();
+    }
     
     public void setWelcomeMessage(String text) {
         int currentHour = LocalDateTime.now().getHour();
@@ -429,9 +467,9 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel projectName;
     private javax.swing.JPanel projectNameContainer;
     private javax.swing.JLabel projectNameLabel;
-    private javax.swing.JPanel toDoContainer;
+    private static javax.swing.JPanel toDoContainer;
     private javax.swing.JLabel toDoTitle;
-    private javax.swing.JLabel totalTasks;
+    private static javax.swing.JLabel totalTasks;
     private javax.swing.JPanel totalTasksContainer;
     private javax.swing.JLabel totalTasksLabel;
     private javax.swing.JLabel userName;

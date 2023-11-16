@@ -43,13 +43,13 @@ public class Create extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 30));
 
-        question1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        question1.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
         question1.setForeground(new java.awt.Color(204, 203, 211));
         question1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         question1.setText("What is your name?");
 
         createButton.setBackground(new java.awt.Color(204, 203, 211));
-        createButton.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        createButton.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
         createButton.setForeground(new java.awt.Color(204, 203, 211));
         createButton.setText("Create Project");
         createButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 203, 211), 2, true));
@@ -63,7 +63,7 @@ public class Create extends javax.swing.JFrame {
         });
 
         userName.setBackground(new java.awt.Color(54, 53, 59));
-        userName.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        userName.setFont(new java.awt.Font("Futura", 0, 18)); // NOI18N
         userName.setForeground(new java.awt.Color(255, 255, 255));
         userName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         userName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 192, 192), 2));
@@ -76,13 +76,13 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
-        question2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        question2.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
         question2.setForeground(new java.awt.Color(204, 203, 211));
         question2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         question2.setText("What is your project's name?");
 
         projectName.setBackground(new java.awt.Color(54, 53, 59));
-        projectName.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        projectName.setFont(new java.awt.Font("Futura", 0, 18)); // NOI18N
         projectName.setForeground(new java.awt.Color(255, 255, 255));
         projectName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         projectName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 192, 192), 2));
@@ -94,6 +94,7 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
+        errorMessage.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
         errorMessage.setForeground(new java.awt.Color(255, 102, 102));
         errorMessage.setText("*You need to fill the fields above");
 
@@ -108,9 +109,8 @@ public class Create extends javax.swing.JFrame {
                         .addComponent(createButton, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(errorMessage, javax.swing.GroupLayout.Alignment.CENTER)
                         .addComponent(userName, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(question2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(projectName, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(question2, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(question1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(148, 148, 148))
         );
@@ -129,7 +129,7 @@ public class Create extends javax.swing.JFrame {
                 .addComponent(errorMessage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
