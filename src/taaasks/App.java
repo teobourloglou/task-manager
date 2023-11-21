@@ -20,14 +20,18 @@ import javax.swing.BoxLayout;
  */
 public class App extends javax.swing.JFrame {
     private static App instance;
-    private static ArrayList<Task> tasks;
+    private static ArrayList<Task> toDoTasks;
+    private static ArrayList<Task> doingTasks;
+    private static ArrayList<Task> doneTasks;
     private int numberOfTasks;
     private static int currentTasks;
     /**
      * Creates new form App
      */
     public App() {
-        tasks = new ArrayList<>();
+        toDoTasks = new ArrayList<>();
+        doingTasks = new ArrayList<>();
+        doneTasks = new ArrayList<>();
         initComponents();
         numberOfTasks = 0;
         currentTasks = 0;
@@ -51,8 +55,6 @@ public class App extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        menu = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         toDoContainer = new javax.swing.JPanel();
@@ -70,37 +72,25 @@ public class App extends javax.swing.JFrame {
         totalTasks = new javax.swing.JLabel();
         icon3 = new javax.swing.JLabel();
         toDoTitle = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        doneContainer = new javax.swing.JPanel();
+        doingTitle = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        doingContainer = new javax.swing.JPanel();
+        doneTitle = new javax.swing.JLabel();
+        totalTasksContainer1 = new javax.swing.JPanel();
+        progressLabel = new javax.swing.JLabel();
+        projectProgress = new javax.swing.JProgressBar();
+        progressPercentage = new javax.swing.JLabel();
+        infoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Taaasks");
         setBackground(new java.awt.Color(247, 247, 255));
-        setPreferredSize(new java.awt.Dimension(1300, 750));
+        setPreferredSize(new java.awt.Dimension(1192, 750));
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(30, 30, 30));
-
-        menu.setBackground(new java.awt.Color(54, 53, 59));
-
-        logo.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
-        logo.setForeground(new java.awt.Color(247, 247, 255));
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/layers-subtract(1).png"))); // NOI18N
-
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
-        menu.setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(logo)
-                .addGap(22, 22, 22))
-        );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(logo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         userName.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         userName.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,7 +102,8 @@ public class App extends javax.swing.JFrame {
         jScrollPane1.setMinimumSize(new java.awt.Dimension(280, 5));
 
         toDoContainer.setBackground(new java.awt.Color(54, 53, 59));
-        toDoContainer.setMinimumSize(new java.awt.Dimension(280, 0));
+        toDoContainer.setMaximumSize(new java.awt.Dimension(350, 0));
+        toDoContainer.setMinimumSize(new java.awt.Dimension(350, 0));
         toDoContainer.setLayout(new javax.swing.BoxLayout(toDoContainer, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(toDoContainer);
 
@@ -251,48 +242,152 @@ public class App extends javax.swing.JFrame {
         toDoTitle.setForeground(new java.awt.Color(255, 255, 255));
         toDoTitle.setText("To do");
 
+        jScrollPane2.setBackground(new java.awt.Color(30, 30, 30));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(280, 5));
+
+        doneContainer.setBackground(new java.awt.Color(54, 53, 59));
+        doneContainer.setMaximumSize(new java.awt.Dimension(350, 0));
+        doneContainer.setMinimumSize(new java.awt.Dimension(350, 0));
+        doneContainer.setLayout(new javax.swing.BoxLayout(doneContainer, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane2.setViewportView(doneContainer);
+
+        doingTitle.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
+        doingTitle.setForeground(new java.awt.Color(255, 255, 255));
+        doingTitle.setText("Doing");
+
+        jScrollPane3.setBackground(new java.awt.Color(30, 30, 30));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(280, 5));
+
+        doingContainer.setBackground(new java.awt.Color(54, 53, 59));
+        doingContainer.setMaximumSize(new java.awt.Dimension(350, 0));
+        doingContainer.setMinimumSize(new java.awt.Dimension(350, 0));
+        doingContainer.setLayout(new javax.swing.BoxLayout(doingContainer, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane3.setViewportView(doingContainer);
+
+        doneTitle.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
+        doneTitle.setForeground(new java.awt.Color(255, 255, 255));
+        doneTitle.setText("Done");
+
+        totalTasksContainer1.setBackground(new java.awt.Color(54, 53, 59));
+        totalTasksContainer1.setMaximumSize(new java.awt.Dimension(180, 32767));
+        totalTasksContainer1.setMinimumSize(new java.awt.Dimension(180, 0));
+        totalTasksContainer1.setPreferredSize(new java.awt.Dimension(180, 58));
+
+        progressLabel.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
+        progressLabel.setForeground(new java.awt.Color(204, 203, 211));
+        progressLabel.setText("Project Progress");
+
+        projectProgress.setBackground(new java.awt.Color(204, 203, 211));
+        projectProgress.setForeground(new java.awt.Color(151, 145, 189));
+        projectProgress.setBorder(null);
+        projectProgress.setBorderPainted(false);
+
+        progressPercentage.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
+        progressPercentage.setForeground(new java.awt.Color(255, 255, 255));
+        progressPercentage.setText("0%");
+
+        javax.swing.GroupLayout totalTasksContainer1Layout = new javax.swing.GroupLayout(totalTasksContainer1);
+        totalTasksContainer1.setLayout(totalTasksContainer1Layout);
+        totalTasksContainer1Layout.setHorizontalGroup(
+            totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(totalTasksContainer1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(projectProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(totalTasksContainer1Layout.createSequentialGroup()
+                        .addGroup(totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(progressLabel)
+                            .addComponent(progressPercentage))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        totalTasksContainer1Layout.setVerticalGroup(
+            totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, totalTasksContainer1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(progressLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(projectProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(progressPercentage))
+        );
+
+        infoButton.setBackground(new java.awt.Color(30, 30, 30));
+        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/info.png"))); // NOI18N
+        infoButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 30, 30)));
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userName)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(projectNameContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(dateCreatedContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(toDoTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(addTask))))
+                        .addComponent(userName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(infoButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(projectNameContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addComponent(totalTasksContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 583, Short.MAX_VALUE))
+                        .addComponent(dateCreatedContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(totalTasksContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(totalTasksContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(toDoTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(addTask))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(doingTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(doneTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(userName)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(userName)
+                    .addComponent(infoButton))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dateCreatedContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                    .addComponent(projectNameContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                    .addComponent(totalTasksContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTask)
-                    .addComponent(toDoTitle))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dateCreatedContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                .addComponent(projectNameContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                            .addComponent(totalTasksContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addTask)
+                            .addComponent(toDoTitle)
+                            .addComponent(doingTitle)
+                            .addComponent(doneTitle)))
+                    .addComponent(totalTasksContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -300,10 +395,9 @@ public class App extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,35 +459,192 @@ public class App extends javax.swing.JFrame {
             Dimension verticalSpacing = new Dimension(0, 10);
             toDoContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
             toDoContainer.add(task);
-            tasks.add(task);
-            updateTaskDisplay();
+            toDoTasks.add(task);
+            updateToDoContainer();
         }
         
     }//GEN-LAST:event_addTaskActionPerformed
+
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
+        InfoBox infoPopup = new InfoBox(this, true);
+
+        infoPopup.setLocationRelativeTo(this);
+        infoPopup.setVisible(true);
+    }//GEN-LAST:event_infoButtonActionPerformed
     
     public static void removeTask(int taskId) {
-        Iterator<Task> iterator = tasks.iterator();
-        while (iterator.hasNext()) {
-            Task task = iterator.next();
+        boolean found = false;
+        Iterator<Task> iteratorToDo = toDoTasks.iterator();
+        while (iteratorToDo.hasNext()) {
+            Task task = iteratorToDo.next();
             if (task.getId() == taskId) {
-                iterator.remove();
+                found = true;
+                iteratorToDo.remove();
                 currentTasks--;
                 totalTasks.setText(String.valueOf(currentTasks));
             }
         }
-        updateTaskDisplay();
+        if (!found) {
+            Iterator<Task> iteratorDoing = doingTasks.iterator();
+            while (iteratorDoing.hasNext()) {
+                Task task = iteratorDoing.next();
+                if (task.getId() == taskId) {
+                    found = true;
+                    iteratorDoing.remove();
+                    currentTasks--;
+                    totalTasks.setText(String.valueOf(currentTasks));
+                }
+            }
+        }
+        if (!found) {
+            Iterator<Task> iteratorDone = doneTasks.iterator();
+            while (iteratorDone.hasNext()) {
+                Task task = iteratorDone.next();
+                if (task.getId() == taskId) {
+                    found = true;
+                    iteratorDone.remove();
+                    currentTasks--;
+                    totalTasks.setText(String.valueOf(currentTasks));
+                }
+            }
+        }
+        updateToDoContainer();
+        updateDoingContainer();
+        updateDoneContainer();
     }
     
-    public static void updateTaskDisplay() {
+    public static void transferTask(int taskId, int containerIndex, Task task) {
+        switch (containerIndex) {
+            case 1:
+                if (!(toDoContainer.getLayout() instanceof BoxLayout)) {
+                    toDoContainer.setLayout(new BoxLayout(toDoContainer, BoxLayout.Y_AXIS));
+                }
+
+                if (toDoContainer.getBackground().equals(new Color(54,53,59))) {
+                    toDoContainer.setBackground(new Color(30,30,30));
+                }
+                    Dimension verticalSpacing1 = new Dimension(0, 10);
+                    toDoContainer.add(Box.createRigidArea(verticalSpacing1)); // Add spacing above the task
+                    toDoContainer.add(task);
+                    toDoTasks.add(task);
+                break;
+            case 2:
+                if (!(doingContainer.getLayout() instanceof BoxLayout)) {
+                    doingContainer.setLayout(new BoxLayout(doingContainer, BoxLayout.Y_AXIS));
+                }
+
+                if (doingContainer.getBackground().equals(new Color(54,53,59))) {
+                    doingContainer.setBackground(new Color(30,30,30));
+                }
+                    Dimension verticalSpacing2 = new Dimension(0, 10);
+                    doingContainer.add(Box.createRigidArea(verticalSpacing2)); // Add spacing above the task
+                    doingContainer.add(task);
+                    doingTasks.add(task);
+                break;
+            case 3:
+                if (!(doneContainer.getLayout() instanceof BoxLayout)) {
+                    doneContainer.setLayout(new BoxLayout(doneContainer, BoxLayout.Y_AXIS));
+                }
+
+                if (doneContainer.getBackground().equals(new Color(54,53,59))) {
+                    doneContainer.setBackground(new Color(30,30,30));
+                }
+                    Dimension verticalSpacing3 = new Dimension(0, 10);
+                    doneContainer.add(Box.createRigidArea(verticalSpacing3)); // Add spacing above the task
+                    doneContainer.add(task);
+                    doneTasks.add(task);
+                break;
+            default:
+                break;
+        }
+        
+    }
+    
+    public static void transferProcedure(int taskId, int transferIndex) {
+        boolean found = false;
+        Iterator<Task> iteratorToDo = toDoTasks.iterator();
+        while (iteratorToDo.hasNext()) {
+            Task task = iteratorToDo.next();
+            if (task.getId() == taskId) {
+                found = true;
+                iteratorToDo.remove();
+                transferTask(taskId, transferIndex, task);
+            }
+        }
+        if (!found) {
+            Iterator<Task> iteratorDoing = doingTasks.iterator();
+            while (iteratorDoing.hasNext()) {
+                Task task = iteratorDoing.next();
+                if (task.getId() == taskId) {
+                    found = true;
+                    iteratorDoing.remove();
+                    transferTask(taskId, transferIndex, task);
+                }
+            }
+        }
+        if (!found) {
+            Iterator<Task> iteratorDone = doneTasks.iterator();
+            while (iteratorDone.hasNext()) {
+                Task task = iteratorDone.next();
+                if (task.getId() == taskId) {
+                    found = true;
+                    iteratorDone.remove();
+                    transferTask(taskId, transferIndex, task);
+                }
+            }
+        }
+        updateToDoContainer();
+        updateDoingContainer();
+        updateDoneContainer();
+    }
+        
+    public static void updateToDoContainer() {
         Dimension verticalSpacing = new Dimension(0, 10);
         
         toDoContainer.removeAll();
-        for (Task task : tasks) {
+        for (Task task : toDoTasks) {
             toDoContainer.add(task);
             toDoContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
         }
         toDoContainer.revalidate();
         toDoContainer.repaint();
+        updateProgressBar();
+    }
+    
+    public static void updateDoingContainer() {
+        Dimension verticalSpacing = new Dimension(0, 10);
+        
+        doingContainer.removeAll();
+        for (Task task : doingTasks) {
+            doingContainer.add(task);
+            doingContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
+        }
+        doingContainer.revalidate();
+        doingContainer.repaint();
+        updateProgressBar();
+    }
+    
+    public static void updateDoneContainer() {
+        Dimension verticalSpacing = new Dimension(0, 10);
+        
+        doneContainer.removeAll();
+        for (Task task : doneTasks) {
+            doneContainer.add(task);
+            doneContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
+        }
+        doneContainer.revalidate();
+        doneContainer.repaint();
+        updateProgressBar();
+    }
+    
+    public static void updateProgressBar() {
+        float finished = doneTasks.size();
+        float total = (float) currentTasks;
+        float percentage = (float) (finished / total)  * 100;
+        int intPercentage = (int) percentage;
+        projectProgress.setValue(intPercentage);
+        progressPercentage.setText(String.valueOf(intPercentage) + "%");
+        
     }
     
     public void setWelcomeMessage(String text) {
@@ -455,22 +706,31 @@ public class App extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addTask;
     private javax.swing.JPanel dateCreatedContainer;
+    private static javax.swing.JPanel doingContainer;
+    private javax.swing.JLabel doingTitle;
+    private static javax.swing.JPanel doneContainer;
+    private javax.swing.JLabel doneTitle;
     private javax.swing.JLabel icon1;
     private javax.swing.JLabel icon2;
     private javax.swing.JLabel icon3;
+    private javax.swing.JButton infoButton;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel logo;
-    private javax.swing.JPanel menu;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel progressLabel;
+    private static javax.swing.JLabel progressPercentage;
     private javax.swing.JLabel projectDate;
     private javax.swing.JLabel projectDateLabel;
     private javax.swing.JLabel projectName;
     private javax.swing.JPanel projectNameContainer;
     private javax.swing.JLabel projectNameLabel;
+    private static javax.swing.JProgressBar projectProgress;
     private static javax.swing.JPanel toDoContainer;
     private javax.swing.JLabel toDoTitle;
     private static javax.swing.JLabel totalTasks;
     private javax.swing.JPanel totalTasksContainer;
+    private javax.swing.JPanel totalTasksContainer1;
     private javax.swing.JLabel totalTasksLabel;
     private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables

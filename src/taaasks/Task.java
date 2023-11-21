@@ -3,6 +3,7 @@ package taaasks;
 import java.awt.Color;
 import javax.swing.JLabel;
 import static taaasks.App.removeTask;
+import static taaasks.App.transferProcedure;
 
 
 /*
@@ -61,10 +62,14 @@ public class Task extends javax.swing.JPanel {
         deleteButton = new javax.swing.JButton();
         taskTag = new javax.swing.JLabel();
         taskDescription = new javax.swing.JLabel();
+        doneButton = new javax.swing.JButton();
+        doingButton = new javax.swing.JButton();
+        toDoButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(54, 53, 59));
-        setMaximumSize(new java.awt.Dimension(280, 150));
-        setPreferredSize(new java.awt.Dimension(280, 123));
+        setMaximumSize(new java.awt.Dimension(350, 140));
+        setMinimumSize(new java.awt.Dimension(350, 140));
+        setPreferredSize(new java.awt.Dimension(280, 140));
 
         taskTitle.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         taskTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,6 +79,7 @@ public class Task extends javax.swing.JPanel {
         deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/trash.png"))); // NOI18N
         deleteButton.setToolTipText("Delete task");
         deleteButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(54, 53, 59)));
+        deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -88,21 +94,66 @@ public class Task extends javax.swing.JPanel {
         taskDescription.setForeground(new java.awt.Color(204, 203, 211));
         taskDescription.setText("Task Description");
 
+        doneButton.setBackground(new java.awt.Color(54, 53, 59));
+        doneButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/check.png"))); // NOI18N
+        doneButton.setToolTipText("Move to \"Done\"");
+        doneButton.setBorder(null);
+        doneButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        doneButton.setMaximumSize(new java.awt.Dimension(22, 22));
+        doneButton.setMinimumSize(new java.awt.Dimension(22, 22));
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
+
+        doingButton.setBackground(new java.awt.Color(54, 53, 59));
+        doingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/hourglass.png"))); // NOI18N
+        doingButton.setToolTipText("Move to \"Doing\"");
+        doingButton.setBorder(null);
+        doingButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        doingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doingButtonActionPerformed(evt);
+            }
+        });
+
+        toDoButton.setBackground(new java.awt.Color(54, 53, 59));
+        toDoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/calendar-event(1)(1).png"))); // NOI18N
+        toDoButton.setToolTipText("Move to \"To Do\"");
+        toDoButton.setBorder(null);
+        toDoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        toDoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toDoButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
+                .addComponent(taskTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(279, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(taskDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 12, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(taskTag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(deleteButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(toDoButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(doingButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(doneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(taskDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 82, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -111,12 +162,15 @@ public class Task extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(deleteButton)
-                    .addComponent(taskTag, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(taskTag, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(doneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(doingButton)
+                    .addComponent(toDoButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(taskTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(taskDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(taskDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,11 +179,29 @@ public class Task extends javax.swing.JPanel {
         removeTask(taskId);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        int taskId = this.getId();
+        transferProcedure(taskId,3);
+    }//GEN-LAST:event_doneButtonActionPerformed
+
+    private void doingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doingButtonActionPerformed
+        int taskId = this.getId();
+        transferProcedure(taskId,2);
+    }//GEN-LAST:event_doingButtonActionPerformed
+
+    private void toDoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toDoButtonActionPerformed
+        int taskId = this.getId();
+        transferProcedure(taskId,1);
+    }//GEN-LAST:event_toDoButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton doingButton;
+    private javax.swing.JButton doneButton;
     private javax.swing.JLabel taskDescription;
     private javax.swing.JLabel taskTag;
     private javax.swing.JLabel taskTitle;
+    private javax.swing.JButton toDoButton;
     // End of variables declaration//GEN-END:variables
 }
