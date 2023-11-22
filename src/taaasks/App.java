@@ -157,7 +157,7 @@ public class App extends javax.swing.JFrame {
                 .addComponent(projectNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(projectName)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         dateCreatedContainer.setBackground(new java.awt.Color(54, 53, 59));
@@ -196,7 +196,7 @@ public class App extends javax.swing.JFrame {
                 .addComponent(projectDateLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(projectDate)
-                .addContainerGap())
+                .addGap(11, 11, 11))
         );
 
         totalTasksContainer.setBackground(new java.awt.Color(54, 53, 59));
@@ -235,7 +235,7 @@ public class App extends javax.swing.JFrame {
                 .addComponent(totalTasksLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalTasks)
-                .addContainerGap())
+                .addGap(11, 11, 11))
         );
 
         toDoTitle.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
@@ -297,7 +297,7 @@ public class App extends javax.swing.JFrame {
             .addGroup(totalTasksContainer1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(projectProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(projectProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
                     .addGroup(totalTasksContainer1Layout.createSequentialGroup()
                         .addGroup(totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(progressLabel)
@@ -311,14 +311,16 @@ public class App extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(progressLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(projectProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addComponent(projectProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(progressPercentage))
+                .addComponent(progressPercentage)
+                .addGap(12, 12, 12))
         );
 
         infoButton.setBackground(new java.awt.Color(30, 30, 30));
         infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/info.png"))); // NOI18N
         infoButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 30, 30)));
+        infoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         infoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 infoButtonActionPerformed(evt);
@@ -369,20 +371,17 @@ public class App extends javax.swing.JFrame {
                     .addComponent(userName)
                     .addComponent(infoButton))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(dateCreatedContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                .addComponent(projectNameContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                            .addComponent(totalTasksContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addTask)
-                            .addComponent(toDoTitle)
-                            .addComponent(doingTitle)
-                            .addComponent(doneTitle)))
-                    .addComponent(totalTasksContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(totalTasksContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(projectNameContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(dateCreatedContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(totalTasksContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTask)
+                    .addComponent(toDoTitle)
+                    .addComponent(doingTitle)
+                    .addComponent(doneTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
@@ -423,39 +422,40 @@ public class App extends javax.swing.JFrame {
             toDoContainer.setBackground(new Color(30,30,30));
         }
         
-        numberOfTasks++;
-        currentTasks++;
-        totalTasks.setText(String.valueOf(currentTasks));
-        Task task = new Task();
-        task.setId(numberOfTasks);
-        task.setTitle(taskPopup.getTaskTitle());
-        task.setDescription(taskPopup.getTaskDescription());
-        task.setTag((String) taskPopup.getTaskTag().getSelectedItem());
-        
-        int index = (int) taskPopup.getTaskTag().getSelectedIndex();
-        
-        switch (index) {
-            case 0:
-                task.setTagBackground(150,103,224);
-                break;
-            case 1:
-                task.setTagBackground(212,187,252);
-                break;
-            case 2:
-                task.setTagBackground(235,217,252);
-                break;
-            case 3:
-                task.setTagBackground(242,235,251);
-                break;
-            case 4:
-                task.setTagBackground(251,250,255);
-                break;
-            default:
-                task.setTagBackground(255,255,255);
-                break;
-        }
-        
         if (taskPopup.submit) {
+            
+            numberOfTasks++;
+            currentTasks++;
+            totalTasks.setText(String.valueOf(currentTasks));
+            Task task = new Task();
+            task.setId(numberOfTasks);
+            task.setTitle(taskPopup.getTaskTitle());
+            task.setDescription(taskPopup.getTaskDescription());
+            task.setTag((String) taskPopup.getTaskTag().getSelectedItem());
+
+            int index = (int) taskPopup.getTaskTag().getSelectedIndex();
+
+            switch (index) {
+                case 0:
+                    task.setTagBackground(150,103,224);
+                    break;
+                case 1:
+                    task.setTagBackground(212,187,252);
+                    break;
+                case 2:
+                    task.setTagBackground(235,217,252);
+                    break;
+                case 3:
+                    task.setTagBackground(242,235,251);
+                    break;
+                case 4:
+                    task.setTagBackground(251,250,255);
+                    break;
+                default:
+                    task.setTagBackground(255,255,255);
+                    break;
+            }
+        
             Dimension verticalSpacing = new Dimension(0, 10);
             toDoContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
             toDoContainer.add(task);

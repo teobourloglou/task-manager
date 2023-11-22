@@ -72,7 +72,7 @@ public class Welcome extends javax.swing.JFrame {
         text3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/boost-arrow.png"))); // NOI18N
         text3.setText("Boost your productivity");
 
-        exploreButton.setBackground(new java.awt.Color(204, 203, 211));
+        exploreButton.setBackground(new java.awt.Color(30, 30, 30));
         exploreButton.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
         exploreButton.setForeground(new java.awt.Color(204, 203, 211));
         exploreButton.setText("Start Exploring");
@@ -101,9 +101,8 @@ public class Welcome extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(description, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(title, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(logo)
-                        .addComponent(logoText))
+                    .addComponent(logo, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(logoText, javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)

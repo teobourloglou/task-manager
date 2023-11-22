@@ -48,7 +48,7 @@ public class Create extends javax.swing.JFrame {
         question1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         question1.setText("What is your name?");
 
-        createButton.setBackground(new java.awt.Color(204, 203, 211));
+        createButton.setBackground(new java.awt.Color(30, 30, 30));
         createButton.setFont(new java.awt.Font("Futura", 1, 16)); // NOI18N
         createButton.setForeground(new java.awt.Color(204, 203, 211));
         createButton.setText("Create Project");

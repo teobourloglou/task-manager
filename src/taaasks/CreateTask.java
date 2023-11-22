@@ -59,9 +59,11 @@ public class CreateTask extends javax.swing.JDialog {
             }
         });
 
-        createButton.setBackground(new java.awt.Color(202, 232, 234));
+        createButton.setBackground(new java.awt.Color(30, 30, 30));
         createButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        createButton.setForeground(new java.awt.Color(204, 203, 211));
         createButton.setText("Create");
+        createButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 203, 211)));
         createButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
