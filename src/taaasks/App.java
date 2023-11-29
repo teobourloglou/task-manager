@@ -427,27 +427,8 @@ public class App extends javax.swing.JFrame {
             task.setTag((String) taskPopup.getTaskTag().getSelectedItem());
 
             int index = (int) taskPopup.getTaskTag().getSelectedIndex();
-
-            switch (index) {
-                case 0:
-                    task.setTagBackground(150,103,224);
-                    break;
-                case 1:
-                    task.setTagBackground(212,187,252);
-                    break;
-                case 2:
-                    task.setTagBackground(235,217,252);
-                    break;
-                case 3:
-                    task.setTagBackground(242,235,251);
-                    break;
-                case 4:
-                    task.setTagBackground(251,250,255);
-                    break;
-                default:
-                    task.setTagBackground(255,255,255);
-                    break;
-            }
+            setBackground(task, index);
+            
         
             Dimension verticalSpacing = new Dimension(0, 10);
             toDoContainer.add(Box.createRigidArea(verticalSpacing)); // Add spacing above the task
@@ -458,6 +439,29 @@ public class App extends javax.swing.JFrame {
         
     }//GEN-LAST:event_addTaskActionPerformed
 
+    private void setBackground(Task task, int index) {
+        switch (index) {
+            case 0:
+                task.setTagBackground(150,103,224);
+                break;
+            case 1:
+                task.setTagBackground(212,187,252);
+                break;
+            case 2:
+                task.setTagBackground(235,217,252);
+                break;
+            case 3:
+                task.setTagBackground(242,235,251);
+                break;
+            case 4:
+                task.setTagBackground(251,250,255);
+                break;
+            default:
+                task.setTagBackground(255,255,255);
+                break;
+        }
+    }
+    
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
         InfoBox infoPopup = new InfoBox(this, true);
 
