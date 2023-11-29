@@ -30,8 +30,8 @@ public class InfoBox extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         projectCreatedBy = new javax.swing.JLabel();
         photo = new javax.swing.JLabel();
-        projectDate = new javax.swing.JLabel();
-        projectCreatedBy1 = new javax.swing.JLabel();
+        creatorName = new javax.swing.JLabel();
+        githubText = new javax.swing.JLabel();
         githubLink = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,15 +49,15 @@ public class InfoBox extends javax.swing.JDialog {
         photo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/taaasks/media/81062280293(1).png"))); // NOI18N
         photo.setText("jLabel1");
 
-        projectDate.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
-        projectDate.setForeground(new java.awt.Color(255, 255, 255));
-        projectDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        projectDate.setText("Theologos Bourloglou");
+        creatorName.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
+        creatorName.setForeground(new java.awt.Color(255, 255, 255));
+        creatorName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        creatorName.setText("Theologos Bourloglou");
 
-        projectCreatedBy1.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
-        projectCreatedBy1.setForeground(new java.awt.Color(204, 203, 211));
-        projectCreatedBy1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        projectCreatedBy1.setText("Find this project on Github");
+        githubText.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
+        githubText.setForeground(new java.awt.Color(204, 203, 211));
+        githubText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        githubText.setText("Find this project on Github");
 
         githubLink.setFont(new java.awt.Font("Futura", 1, 14)); // NOI18N
         githubLink.setForeground(new java.awt.Color(255, 255, 255));
@@ -72,9 +72,9 @@ public class InfoBox extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(projectCreatedBy1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(githubText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(githubLink, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-                    .addComponent(projectDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(creatorName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(photo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(projectCreatedBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -87,9 +87,9 @@ public class InfoBox extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(photo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(projectDate)
+                .addComponent(creatorName)
                 .addGap(33, 33, 33)
-                .addComponent(projectCreatedBy1)
+                .addComponent(githubText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(githubLink)
                 .addContainerGap(74, Short.MAX_VALUE))
@@ -152,11 +152,11 @@ public class InfoBox extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel creatorName;
     private javax.swing.JLabel githubLink;
+    private javax.swing.JLabel githubText;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel photo;
     private javax.swing.JLabel projectCreatedBy;
-    private javax.swing.JLabel projectCreatedBy1;
-    private javax.swing.JLabel projectDate;
     // End of variables declaration//GEN-END:variables
 }

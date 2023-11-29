@@ -19,12 +19,12 @@ import javax.swing.BoxLayout;
  * @author teobourloglou
  */
 public class App extends javax.swing.JFrame {
-    private static App instance;
     private static ArrayList<Task> toDoTasks;
     private static ArrayList<Task> doingTasks;
     private static ArrayList<Task> doneTasks;
-    private int numberOfTasks;
     private static int currentTasks;
+    private int numberOfTasks;
+    
     /**
      * Creates new form App
      */
@@ -36,13 +36,6 @@ public class App extends javax.swing.JFrame {
         numberOfTasks = 0;
         currentTasks = 0;
         totalTasks.setText("0");
-    }
-    
-    public static App getInstance() {
-        if (instance == null) {
-            instance = new App();
-        } 
-        return instance;
     }
 
     /**
@@ -78,7 +71,7 @@ public class App extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         doingContainer = new javax.swing.JPanel();
         doneTitle = new javax.swing.JLabel();
-        totalTasksContainer1 = new javax.swing.JPanel();
+        progressContainer = new javax.swing.JPanel();
         progressLabel = new javax.swing.JLabel();
         projectProgress = new javax.swing.JProgressBar();
         progressPercentage = new javax.swing.JLabel();
@@ -272,10 +265,10 @@ public class App extends javax.swing.JFrame {
         doneTitle.setForeground(new java.awt.Color(255, 255, 255));
         doneTitle.setText("Done");
 
-        totalTasksContainer1.setBackground(new java.awt.Color(54, 53, 59));
-        totalTasksContainer1.setMaximumSize(new java.awt.Dimension(180, 32767));
-        totalTasksContainer1.setMinimumSize(new java.awt.Dimension(180, 0));
-        totalTasksContainer1.setPreferredSize(new java.awt.Dimension(180, 58));
+        progressContainer.setBackground(new java.awt.Color(54, 53, 59));
+        progressContainer.setMaximumSize(new java.awt.Dimension(180, 32767));
+        progressContainer.setMinimumSize(new java.awt.Dimension(180, 0));
+        progressContainer.setPreferredSize(new java.awt.Dimension(180, 58));
 
         progressLabel.setFont(new java.awt.Font("Futura", 0, 13)); // NOI18N
         progressLabel.setForeground(new java.awt.Color(204, 203, 211));
@@ -290,24 +283,24 @@ public class App extends javax.swing.JFrame {
         progressPercentage.setForeground(new java.awt.Color(255, 255, 255));
         progressPercentage.setText("0%");
 
-        javax.swing.GroupLayout totalTasksContainer1Layout = new javax.swing.GroupLayout(totalTasksContainer1);
-        totalTasksContainer1.setLayout(totalTasksContainer1Layout);
-        totalTasksContainer1Layout.setHorizontalGroup(
-            totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(totalTasksContainer1Layout.createSequentialGroup()
+        javax.swing.GroupLayout progressContainerLayout = new javax.swing.GroupLayout(progressContainer);
+        progressContainer.setLayout(progressContainerLayout);
+        progressContainerLayout.setHorizontalGroup(
+            progressContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(progressContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(progressContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(projectProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
-                    .addGroup(totalTasksContainer1Layout.createSequentialGroup()
-                        .addGroup(totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(progressContainerLayout.createSequentialGroup()
+                        .addGroup(progressContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(progressLabel)
                             .addComponent(progressPercentage))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        totalTasksContainer1Layout.setVerticalGroup(
-            totalTasksContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, totalTasksContainer1Layout.createSequentialGroup()
+        progressContainerLayout.setVerticalGroup(
+            progressContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, progressContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(progressLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -345,7 +338,7 @@ public class App extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(totalTasksContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addComponent(totalTasksContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
+                        .addComponent(progressContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -375,7 +368,7 @@ public class App extends javax.swing.JFrame {
                     .addComponent(totalTasksContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                     .addComponent(projectNameContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                     .addComponent(dateCreatedContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                    .addComponent(totalTasksContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                    .addComponent(progressContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTask)
@@ -718,6 +711,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel progressContainer;
     private javax.swing.JLabel progressLabel;
     private static javax.swing.JLabel progressPercentage;
     private javax.swing.JLabel projectDate;
@@ -730,7 +724,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel toDoTitle;
     private static javax.swing.JLabel totalTasks;
     private javax.swing.JPanel totalTasksContainer;
-    private javax.swing.JPanel totalTasksContainer1;
     private javax.swing.JLabel totalTasksLabel;
     private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables

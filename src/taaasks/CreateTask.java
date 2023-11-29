@@ -35,7 +35,7 @@ public class CreateTask extends javax.swing.JDialog {
         taskTitle = new javax.swing.JTextField();
         createButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
-        titleLabel1 = new javax.swing.JLabel();
+        descriptionLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taskDescription = new javax.swing.JTextArea();
         errorMessage = new javax.swing.JLabel();
@@ -75,9 +75,9 @@ public class CreateTask extends javax.swing.JDialog {
         titleLabel.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel.setText("Enter a title for this task*");
 
-        titleLabel1.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
-        titleLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        titleLabel1.setText("Enter a description");
+        descriptionLabel.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
+        descriptionLabel.setForeground(new java.awt.Color(255, 255, 255));
+        descriptionLabel.setText("Enter a description");
 
         taskDescription.setBackground(new java.awt.Color(54, 53, 59));
         taskDescription.setColumns(20);
@@ -110,7 +110,7 @@ public class CreateTask extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLabel1)
+                            .addComponent(descriptionLabel)
                             .addComponent(titleLabel))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -132,7 +132,7 @@ public class CreateTask extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(taskTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(titleLabel1)
+                .addComponent(descriptionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,6 +233,7 @@ public class CreateTask extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createButton;
+    private javax.swing.JLabel descriptionLabel;
     private javax.swing.JLabel errorMessage;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -241,6 +242,5 @@ public class CreateTask extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> taskTag;
     private javax.swing.JTextField taskTitle;
     private javax.swing.JLabel titleLabel;
-    private javax.swing.JLabel titleLabel1;
     // End of variables declaration//GEN-END:variables
 }
